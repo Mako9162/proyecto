@@ -9,4 +9,4 @@ app.use(express.json());
 const router = require('./routes/router.js');
 app.use('/api', router);
 // Servidor
-app.listen(PORT, () => console.log(`Servidor en linea en puerto ${PORT}`));
+app.listen(PORT, () => console.log(`Servidor en linea, puerto ${PORT}!!`));
