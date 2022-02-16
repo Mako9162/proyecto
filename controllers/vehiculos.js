@@ -26,7 +26,27 @@ function vehiController(req, res) {
 
 };
 
-function vehiiController( req, res){
+function vehidController(req, res) {
+    
+    const {vehi_id} = req.params;
+
+    const sql = `DELETE FROM vehiculo WHERE vehi_id= ${vehi_id}` ;
+
+    jwt.verify(req.token, "smvssmvs", (err) => {
+        if(err){
+            res.send('Token no valido');
+        }else{
+            db.query(sql, (error, result) => {
+                if (error) throw error;
+                res.status(200).send('Eliminado correctamente !');
+            });
+        }        
+
+    });
+
+};
+
+function vehiiController( req, res) {
     
     const sql = 'INSERT INTO vehiculo SET ?';
 
@@ -47,7 +67,7 @@ function vehiiController( req, res){
         }else{
             db.query(sql, customerObj, error => {
                 if (error) throw error; 
-                console.log(customerObj);
+               // console.log(customerObj);
                 res.status(200).send('Guardado correctamente !');
             });
         }
@@ -57,6 +77,7 @@ function vehiiController( req, res){
 
 module.exports = {
     vehiController,
-    vehiiController
+    vehiiController,
+    vehidController
 };
 

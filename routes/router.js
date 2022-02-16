@@ -14,7 +14,7 @@ router.post('/login', (req, res) => {
         email: 'marancibia@outlook.com'
     }
 
-    jwt.sign({user: user}, 'smvssmvs', {expiresIn: '1m'}, (err, token) => {
+    jwt.sign({user: user}, 'smvssmvs', {expiresIn: '365d'}, (err, token) => {
         res.json({
             token,
         });
@@ -27,7 +27,7 @@ router.post('/post', pass, (req, res) => {
             res.send('Token no valido');
         }else{
             res.json({
-                message:"Post Data Created...",
+                message:"Creado...",
                 authData
             });
         }   
@@ -37,6 +37,9 @@ router.post('/post', pass, (req, res) => {
 //rutas para vehiculos
 router.get('/patente/:vehi_id', pass, vehi.vehiController);
 router.post('/ipatente', pass, vehi.vehiiController);
+router.delete('/patente/:vehi_id', pass, vehi.vehidController);
+
+//ruta para registro
 
 
 module.exports = router;
